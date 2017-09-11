@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e57faf3773198c7f56abed99bff61580",
+    "content-hash": "a76a72d948205d6a7522600ab811236e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2114,16 +2114,16 @@
         },
         {
             "name": "yuri-calabrez/facebook-bot-sdk",
-            "version": "dev-master",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yuri-calabrez/facebook-bot-sdk.git",
-                "reference": "441330689d1ec5670128ff3c1eb64fb6deaa4cec"
+                "reference": "0f2f2023be8121ad2e6ac5a23ebe347bdf6f4dde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yuri-calabrez/facebook-bot-sdk/zipball/441330689d1ec5670128ff3c1eb64fb6deaa4cec",
-                "reference": "441330689d1ec5670128ff3c1eb64fb6deaa4cec",
+                "url": "https://api.github.com/repos/yuri-calabrez/facebook-bot-sdk/zipball/0f2f2023be8121ad2e6ac5a23ebe347bdf6f4dde",
+                "reference": "0f2f2023be8121ad2e6ac5a23ebe347bdf6f4dde",
                 "shasum": ""
             },
             "require": {
@@ -2149,7 +2149,7 @@
                     "email": "yuri.calabrez@gmail.com"
                 }
             ],
-            "time": "2017-09-09 02:52:58"
+            "time": "2017-09-11T17:37:48+00:00"
         }
     ],
     "packages-dev": [
@@ -3629,9 +3629,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "yuri-calabrez/facebook-bot-sdk": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
