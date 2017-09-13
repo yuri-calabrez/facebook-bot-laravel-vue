@@ -2114,16 +2114,16 @@
         },
         {
             "name": "yuri-calabrez/facebook-bot-sdk",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yuri-calabrez/facebook-bot-sdk.git",
-                "reference": "0f2f2023be8121ad2e6ac5a23ebe347bdf6f4dde"
+                "reference": "d98786e6d8451014a3e3c757d6608af4a462cd48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yuri-calabrez/facebook-bot-sdk/zipball/0f2f2023be8121ad2e6ac5a23ebe347bdf6f4dde",
-                "reference": "0f2f2023be8121ad2e6ac5a23ebe347bdf6f4dde",
+                "url": "https://api.github.com/repos/yuri-calabrez/facebook-bot-sdk/zipball/d98786e6d8451014a3e3c757d6608af4a462cd48",
+                "reference": "d98786e6d8451014a3e3c757d6608af4a462cd48",
                 "shasum": ""
             },
             "require": {
@@ -2149,7 +2149,7 @@
                     "email": "yuri.calabrez@gmail.com"
                 }
             ],
-            "time": "2017-09-11T17:37:48+00:00"
+            "time": "2017-09-13T01:18:40+00:00"
         }
     ],
     "packages-dev": [
