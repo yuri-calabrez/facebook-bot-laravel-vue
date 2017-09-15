@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use CodeBot\Build\Solid;
 use CodeBot\CallSendApi;
 use CodeBot\Element\Button;
 use CodeBot\Element\Product;
@@ -31,12 +32,19 @@ class BotController extends Controller
         $senderId = $sender->getSenderId();
         $message = $sender->getMessage();
 
-        $text = new Text($senderId);
-        $callSendApi = new CallSendApi(config('botfb.page_access_token'));
-        $callSendApi->make($text->message('Olá eu sou um Bot!'));
-        $callSendApi->make($text->message('Você digitou: '.$message));
+        $bot = Solid::factory();
+        Solid::setPageAccessToken(config('botfb.page_access_token'));
+        Solid::setSenderId($senderId);
 
-        $buttonTemplate = new ButtonsTemplate($senderId);
+        $bot->message('text', 'Olá tudo bem!');
+        $bot->message('text', 'Você digitou: '.$message);
+
+        $bot->message('image', 'http://www.dumpaday.com/wp-content/uploads/2017/01/random-pictures-74.jpg');
+        $bot->message('audio', 'https://fathomless-castle-56481.herokuapp.com/audio/woohoo.wav');
+        $bot->message('file', 'https://fathomless-castle-56481.herokuapp.com/file/file.zip');
+        $bot->message('video', 'https://fathomless-castle-56481.herokuapp.com/video/video.mp4');
+
+        /*$buttonTemplate = new ButtonsTemplate($senderId);
         $buttonTemplate->add(new Button('web_url', 'Google', 'https://www.google.com'));
         $buttonTemplate->add(new Button('web_url', 'PDV Calçados', 'https://www.pdvcalcados.com.br'));
         $callSendApi->make($buttonTemplate->message("Testando botões"));
@@ -63,7 +71,7 @@ class BotController extends Controller
         $template = new ListTemplate($senderId);
         $template->add($product);
         $template->add($product2);
-        $callSendApi->make($template->message("Testando List"));
+        $callSendApi->make($template->message("Testando List"));*/
 
     }
 }
