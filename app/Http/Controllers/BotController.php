@@ -31,10 +31,20 @@ class BotController extends Controller
         $sender = new SenderRequest;
         $senderId = $sender->getSenderId();
         $message = $sender->getMessage();
+        $postback = $sender->getPostback();
+
 
         $bot = Solid::factory();
         Solid::setPageAccessToken(config('botfb.page_access_token'));
         Solid::setSenderId($senderId);
+
+        if($postback) {
+            if(is_array($postback)) {
+                $postback = json_encode($postback);
+            }
+            $bot->message('text', 'Postback: '.$postback);
+            return '';
+        }
 
         $bot->message('text', 'Olá tudo bem!');
         $bot->message('text', 'Você digitou: '.$message);
@@ -44,34 +54,21 @@ class BotController extends Controller
         $bot->message('file', 'https://fathomless-castle-56481.herokuapp.com/file/file.zip');
         $bot->message('video', 'https://fathomless-castle-56481.herokuapp.com/video/video.mp4');
 
-        /*$buttonTemplate = new ButtonsTemplate($senderId);
-        $buttonTemplate->add(new Button('web_url', 'Google', 'https://www.google.com'));
-        $buttonTemplate->add(new Button('web_url', 'PDV Calçados', 'https://www.pdvcalcados.com.br'));
-        $callSendApi->make($buttonTemplate->message("Testando botões"));
+        $buttons = [
+            new Button('web_url', 'Google', 'https://www.google.com'),
+            new Button('web_url', 'Github', 'https://github.com')
+        ];
+        $bot->template('buttons', 'Testando botões', $buttons);
 
-        $button = new Button('web_url', null, 'https://angular.io');
-        $product = new Product('Produto 1', 'https://angular.io/assets/images/logos/angular/angular.png',
-            'Curso Angular', $button);
+        $products = [
+            new Product('Produto 1', 'https://angular.io/assets/images/logos/angular/angular.png',
+                'Curso Angular', new Button('web_url', null, 'https://angular.io')),
+            new Product('Produto 2', 'https://vuejs.org/images/logo.png','Curso VueJs',
+                new Button('web_url', null, 'https://vuejs.org'))
+        ];
 
-        $button2 = new Button('web_url', null, 'https://vuejs.org');
-        $product2 = new Product('Produto 2', 'https://vuejs.org/images/logo.png','Curso VueJs', $button2);
-
-        $template = new GenericTemplate($senderId);
-        $template->add($product);
-        $template->add($product2);
-        $callSendApi->make($template->message("Testando Generic"));
-
-        $button = new Button('web_url', null, 'https://angular.io');
-        $product = new Product('Produto 1', 'https://angular.io/assets/images/logos/angular/angular.png',
-            'Curso Angular', $button);
-
-        $button2 = new Button('web_url', null, 'https://vuejs.org');
-        $product2 = new Product('Produto 2', 'https://vuejs.org/images/logo.png','Curso VueJs', $button2);
-
-        $template = new ListTemplate($senderId);
-        $template->add($product);
-        $template->add($product2);
-        $callSendApi->make($template->message("Testando List"));*/
+        $bot->template('generic', '', $products);
+        $bot->template('list', '', $products);
 
     }
 }
