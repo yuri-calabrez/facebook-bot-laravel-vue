@@ -12,12 +12,10 @@
 */
 
 Route::get('/', function () {
-    $text = (new \CodeBot\Message\Text("1"))->message("Olá");
-    dd($text);
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::group(['prefix' => 'bot'], function(){
-    Route::get('/webhook', 'BotController@subscribe');
-    Route::post('/webhook', 'BotController@receiveMessage');
+	Route::get('/webhook', 'BotController@subscribe');
+	Route::post('/webhook', 'BotController@receiveMessage');
 });
