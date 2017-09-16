@@ -19,3 +19,5 @@ Route::group(['prefix' => 'bot'], function(){
 	Route::get('/webhook', 'BotController@subscribe');
 	Route::post('/webhook', 'BotController@receiveMessage');
 });
+
+Auth::routes();

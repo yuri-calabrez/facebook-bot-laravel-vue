@@ -10,8 +10,16 @@ const router = new VueRouter({
 	routes
 });
 
+router.beforeEach((to, from, next) => {
+	let requiresAuth = to.meta.requireAuth || false;
+	if(requiresAuth) {
+        return next({path: 'login'})
+	}
+	return next();
+});
+
 const app = new Vue({
 	el: '#app',
-	template: '<div><router-view></router-view></div>',
+	template: '<div class="container"><router-view></router-view></div>',
 	router
 });
