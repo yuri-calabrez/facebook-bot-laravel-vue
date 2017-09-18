@@ -23,6 +23,7 @@
                         <hr>
 
                         <button class="btn" type="submit">Login</button>
+                        <a href="#/register" title="Cadastre-se" class="btn green"> Cadastre-se</a>
                     </form>
                 </div>
             </div>
