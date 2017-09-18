@@ -30906,7 +30906,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Login")]), _vm._v(" "), _c('a', {
     staticClass: "btn green",
     attrs: {
-      "href": "#/register",
+      "href": "#/cadastro",
       "title": "Cadastre-se"
     }
   }, [_vm._v(" Cadastre-se")])])])])])])
@@ -44106,7 +44106,7 @@ module.exports = Component.exports
         requireAuth: false
     }
 }, {
-    path: '/register',
+    path: '/cadastro',
     component: __webpack_require__("./resources/assets/js/components/Auth/Register.vue"),
     meta: {
         requireAuth: false

@@ -14,7 +14,7 @@
                         <div class="input-field">
                             <label for="password">Senha</label>
                             <input id="password" type="password" name="password" required
-                                   v-model="credentials.password">
+                            v-model="credentials.password">
                         </div>
 
                         <input id="remember" type="checkbox" name="remember" v-model="credentials.remember">
@@ -23,7 +23,7 @@
                         <hr>
 
                         <button class="btn" type="submit">Login</button>
-                        <a href="#/register" title="Cadastre-se" class="btn green"> Cadastre-se</a>
+                        <a href="#/cadastro" title="Cadastre-se" class="btn green"> Cadastre-se</a>
                     </form>
                 </div>
             </div>
@@ -47,16 +47,16 @@
         methods: {
             login() {
                 window.axios.post('/login', this.credentials)
-                    .then((response) => {
-                        if (response.data.status === 'success') {
-                            swal('Autenticado com sucesso!', 'Redirecionando para o painel', 'success');
-                            this.$router.push({path: '/'});
-                        } else {
-                            swal('Falha ao autenticar', 'Usuário ou senha inválida', 'error');
-                        }
-                    }).catch(() => {
+                .then((response) => {
+                    if (response.data.status === 'success') {
+                        swal('Autenticado com sucesso!', 'Redirecionando para o painel', 'success');
+                        this.$router.push({path: '/'});
+                    } else {
                         swal('Falha ao autenticar', 'Usuário ou senha inválida', 'error');
-                    });
+                    }
+                }).catch(() => {
+                    swal('Falha ao autenticar', 'Usuário ou senha inválida', 'error');
+                });
             }
         }
     }
