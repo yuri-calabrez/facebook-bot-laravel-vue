@@ -20,6 +20,11 @@ Route::group(['prefix' => 'bot'], function(){
 	Route::post('/webhook', 'BotController@receiveMessage');
 });
 
+Route::group(['prefix' => 'api/v1', 'namespace' => 'Api\\V1', 'middleware' => 'auth'], function(){
+    //Route::resource('/users', 'UsersController');
+});
+
+
 Route::group(['prefix' => 'api/v1', 'namespace' => 'Api\\V1'], function(){
     Route::get('/users/me', 'UsersController@me');
 });
