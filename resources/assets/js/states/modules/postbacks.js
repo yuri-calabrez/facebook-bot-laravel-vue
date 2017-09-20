@@ -1,5 +1,7 @@
 const state = {
-    listPostbacks: []
+    listPostbacks:{
+        data: []
+    }
 };
 
 const mutations = {
@@ -10,9 +12,12 @@ const mutations = {
 
 const actions = {
     getPostbacks(context) {
-        return window.axios.get('/postbacks').then(response => {
+        return window.axios.get('api/v1/postbacks').then(response => {
             context.commit('listPostbacks', response.data);
         });
+    },
+    newPostback(context, data) {
+        return window.axios.post('api/v1/postbacks', data);
     }
 };
 

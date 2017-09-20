@@ -31,5 +31,6 @@ const store = new Vuex.Store(VuexStore);
 const app = new Vue({
 	el: '#app',
 	template: '<div class="container"><router-view></router-view></div>',
-	router
+	router,
+	store
 });
