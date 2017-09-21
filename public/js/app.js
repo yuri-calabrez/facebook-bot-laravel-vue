@@ -1839,6 +1839,91 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Bot/PostbackShow.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert__ = __webpack_require__("./node_modules/sweetalert/lib/sweetalert.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            showEditForm: false
+        };
+    },
+
+    computed: {
+        postback: function postback() {
+            return this.$store.state.postback.postback;
+        }
+    },
+    methods: {
+        save: function save() {
+            var _this = this;
+
+            var data = {
+                id: this.$route.params.id,
+                data: {
+                    value: this.postback.value
+                }
+            };
+
+            this.$store.dispatch('updatePostback', data).then(function () {
+                __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Salvo com sucesso!', 'O bot ja deve responder a este postback!', 'success');
+                _this.showEditForm = false;
+            });
+        },
+        remove: function remove() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
+                title: "Removendo!!",
+                text: "Deseja realmente remover este postback? Você não podera sefazer esta ação",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Confirmar",
+                cancelButtonText: "Cancelar"
+            }, function () {
+                _this2.$store.dispatch('removePostback', _this2.$route.params.id).then(function () {
+                    __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Removido!', 'Removido com sucesso!', 'success');
+                    _this2.$router.push('/');
+                });
+            });
+        }
+    },
+    mounted: function mounted() {
+        var id = this.$route.params.id;
+        this.$store.dispatch('getPostback', id);
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-370f503a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Bot/Postback.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31276,6 +31361,96 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-d037b052\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Bot/PostbackShow.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('h3', [_vm._v("Postback: " + _vm._s(_vm.postback.value))]), _vm._v(" "), _c('p', [_c('router-link', {
+    staticClass: "btn",
+    attrs: {
+      "to": {
+        path: '/'
+      }
+    }
+  }, [_vm._v("Voltar")]), _vm._v(" "), _c('a', {
+    staticClass: "btn blue",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.showEditForm = !_vm.showEditForm
+      }
+    }
+  }, [_vm._v("Editar")]), _vm._v(" "), _c('a', {
+    staticClass: "btn red",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.remove()
+      }
+    }
+  }, [_vm._v("Remover")])], 1), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.showEditForm) ? _c('form', {
+    attrs: {
+      "id": "form-new-postback"
+    },
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.save()
+      }
+    }
+  }, [_c('div', {
+    staticClass: "input-field"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.postback.value),
+      expression: "postback.value"
+    }],
+    attrs: {
+      "type": "text",
+      "name": "value",
+      "id": "value",
+      "required": ""
+    },
+    domProps: {
+      "value": (_vm.postback.value)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.postback.value = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "active",
+    attrs: {
+      "for": "value"
+    }
+  }, [_vm._v("Indentificação do Postback")])]), _vm._v(" "), _c('input', {
+    staticClass: "btn",
+    attrs: {
+      "type": "submit",
+      "value": "Atualizar"
+    }
+  })]) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-d037b052", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-router/dist/vue-router.esm.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -45459,14 +45634,60 @@ module.exports = Component.exports
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/Bot/PostbackShow.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Bot/PostbackShow.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-d037b052\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Bot/PostbackShow.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/home/vagrant/Code/cursos/Code-education/Chatbot/projeto/resources/assets/js/components/Bot/PostbackShow.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] PostbackShow.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d037b052", Component.options)
+  } else {
+    hotAPI.reload("data-v-d037b052", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/routes.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
 /* harmony default export */ __webpack_exports__["a"] = ([{
     path: '/',
     component: __webpack_require__("./resources/assets/js/components/Bot/Postback.vue"),
+    meta: {
+        requireAuth: true
+    }
+}, {
+    path: '/postback/:id',
+    component: __webpack_require__("./resources/assets/js/components/Bot/PostbackShow.vue"),
     meta: {
         requireAuth: true
     }
@@ -45508,12 +45729,16 @@ module.exports = Component.exports
 var state = {
     listPostbacks: {
         data: []
-    }
+    },
+    postback: {}
 };
 
 var mutations = {
     listPostbacks: function listPostbacks(state, data) {
         state.listPostbacks = data;
+    },
+    postback: function postback(state, data) {
+        state.postback = data;
     }
 };
 
@@ -45525,6 +45750,17 @@ var actions = {
     },
     newPostback: function newPostback(context, data) {
         return window.axios.post('api/v1/postbacks', data);
+    },
+    getPostback: function getPostback(context, id) {
+        return window.axios.get('api/v1/postbacks/' + id).then(function (response) {
+            context.commit('postback', response.data);
+        });
+    },
+    updatePostback: function updatePostback(context, data) {
+        return window.axios.put('api/v1/postbacks/' + data.id, data.data);
+    },
+    removePostback: function removePostback(context, id) {
+        return window.axios.delete('api/v1/postbacks/' + id);
     }
 };
 
