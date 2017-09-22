@@ -14,7 +14,7 @@ class AddFieldGetStartedButtonToPostbacks extends Migration
     public function up()
     {
         Schema::table('postbacks', function (Blueprint $table){
-           $table->boolean('get_started');
+           $table->boolean('get_started')->default(false);
         });
     }
 

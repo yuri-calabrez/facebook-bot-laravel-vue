@@ -1866,6 +1866,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -1912,6 +1916,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.$store.dispatch('removePostback', _this2.$route.params.id).then(function () {
                     __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Removido!', 'Removido com sucesso!', 'success');
                     _this2.$router.push('/');
+                });
+            });
+        },
+        addGetStartedButton: function addGetStartedButton() {
+            var _this3 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
+                title: "Botão começar!!",
+                text: "Você tem certeza que quer definir este postback como ação do botão começar?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim",
+                cancelButtonText: "Não"
+            }, function () {
+                _this3.$store.dispatch('addGetStarted', _this3.$route.params.id).then(function () {
+                    __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Processo concluído!', 'Botão começar vai responder a este postback', 'success');
+                    var id = _this3.$route.params.id;
+                    _this3.$store.dispatch('getPostback', id);
+                });
+            });
+        },
+        removeGetStartedButton: function removeGetStartedButton() {
+            var _this4 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
+                title: "Removendo botão começar!!",
+                text: "Você esta desativando o botão começar",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim",
+                cancelButtonText: "Não"
+            }, function () {
+                _this4.$store.dispatch('removeGetStarted').then(function (res) {
+                    var err = res.data.error || null;
+                    if (err) {
+                        var message = 'Ocorreu algo inesperado';
+                        if (err.code === 100) {
+                            message = 'Você precisa manter o botão começar, ele é necessario para a exibiçãodo menu. Remova o menu primeiro';
+                        }
+                        __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Erro', message, 'error');
+                    } else {
+                        __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Botão começar desativado!', '', 'success');
+                    }
+
+                    var id = _this4.$route.params.id;
+                    _this4.$store.dispatch('getPostback', id);
                 });
             });
         }
@@ -31153,7 +31205,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           path: '/postback/' + postback.id
         }
       }
-    }, [_vm._v("\n            " + _vm._s(postback.value) + "\n        ")])
+    }, [(postback.get_started) ? _c('i', {
+      staticClass: "material-icons"
+    }, [_vm._v("done_all")]) : _vm._e(), _vm._v(" " + _vm._s(postback.value) + "\n        ")])
   })), _vm._v(" "), _c('form', {
     attrs: {
       "id": "form-new-postback"
@@ -31372,7 +31426,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         path: '/'
       }
     }
-  }, [_vm._v("Voltar")]), _vm._v(" "), _c('a', {
+  }, [_vm._v("Voltar")]), _vm._v(" "), (!_vm.postback.get_started) ? _c('a', {
+    staticClass: "btn green",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.addGetStartedButton()
+      }
+    }
+  }, [_vm._v("definir como botão começar")]) : _vm._e(), _vm._v(" "), (_vm.postback.get_started) ? _c('a', {
+    staticClass: "btn green",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.removeGetStartedButton()
+      }
+    }
+  }, [_vm._v("remover botão começar")]) : _vm._e(), _vm._v(" "), _c('a', {
     staticClass: "btn blue",
     attrs: {
       "href": "#"
@@ -45761,6 +45837,12 @@ var actions = {
     },
     removePostback: function removePostback(context, id) {
         return window.axios.delete('api/v1/postbacks/' + id);
+    },
+    addGetStarted: function addGetStarted(context, id) {
+        return window.axios.post('/api/v1/postbacks/get-started-button/' + id);
+    },
+    removeGetStarted: function removeGetStarted(context) {
+        return window.axios.delete('/api/v1/postbacks/get-started-button/');
     }
 };
 
