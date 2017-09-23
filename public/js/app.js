@@ -1782,6 +1782,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Bot/Message.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Bot/Postback.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1844,8 +1870,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert__ = __webpack_require__("./node_modules/sweetalert/lib/sweetalert.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Message__ = __webpack_require__("./resources/assets/js/components/Bot/Message.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Message__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert__ = __webpack_require__("./node_modules/sweetalert/lib/sweetalert.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert__);
 //
 //
 //
@@ -1870,13 +1898,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'message': __WEBPACK_IMPORTED_MODULE_0__Message___default.a
+    },
     data: function data() {
         return {
-            showEditForm: false
+            showEditForm: false,
+            dataToSave: { type: '' }
         };
     },
 
@@ -1897,14 +1957,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
 
             this.$store.dispatch('updatePostback', data).then(function () {
-                __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Salvo com sucesso!', 'O bot ja deve responder a este postback!', 'success');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()('Salvo com sucesso!', 'O bot ja deve responder a este postback!', 'success');
                 _this.showEditForm = false;
             });
         },
         remove: function remove() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
+            __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()({
                 title: "Removendo!!",
                 text: "Deseja realmente remover este postback? Você não podera sefazer esta ação",
                 type: "warning",
@@ -1914,7 +1974,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 cancelButtonText: "Cancelar"
             }, function () {
                 _this2.$store.dispatch('removePostback', _this2.$route.params.id).then(function () {
-                    __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Removido!', 'Removido com sucesso!', 'success');
+                    __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()('Removido!', 'Removido com sucesso!', 'success');
                     _this2.$router.push('/');
                 });
             });
@@ -1922,7 +1982,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addGetStartedButton: function addGetStartedButton() {
             var _this3 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
+            __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()({
                 title: "Botão começar!!",
                 text: "Você tem certeza que quer definir este postback como ação do botão começar?",
                 type: "warning",
@@ -1932,7 +1992,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 cancelButtonText: "Não"
             }, function () {
                 _this3.$store.dispatch('addGetStarted', _this3.$route.params.id).then(function () {
-                    __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Processo concluído!', 'Botão começar vai responder a este postback', 'success');
+                    __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()('Processo concluído!', 'Botão começar vai responder a este postback', 'success');
                     var id = _this3.$route.params.id;
                     _this3.$store.dispatch('getPostback', id);
                 });
@@ -1941,7 +2001,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeGetStartedButton: function removeGetStartedButton() {
             var _this4 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
+            __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()({
                 title: "Removendo botão começar!!",
                 text: "Você esta desativando o botão começar",
                 type: "warning",
@@ -1957,14 +2017,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         if (err.code === 100) {
                             message = 'Você precisa manter o botão começar, ele é necessario para a exibiçãodo menu. Remova o menu primeiro';
                         }
-                        __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Erro', message, 'error');
+                        __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()('Erro', message, 'error');
                     } else {
-                        __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Botão começar desativado!', '', 'success');
+                        __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()('Botão começar desativado!', '', 'success');
                     }
 
                     var id = _this4.$route.params.id;
                     _this4.$store.dispatch('getPostback', id);
                 });
+            });
+        },
+        newMessage: function newMessage() {
+            var _this5 = this;
+
+            var $ = window.jQuery;
+            $('#messageSaveBtn').val('Aguarde...').attr('disabled', true);
+
+            var data = {
+                type: this.dataToSave.type || 'text',
+                message: this.dataToSave.message,
+                template: false,
+                postback_id: this.$route.params.id
+            };
+
+            var messagesType = ['text', 'file', 'audio', 'image', 'video'];
+
+            if (messagesType.indexOf(data.type) === -1) {
+                data.template = true;
+            }
+            this.$store.dispatch('newMessage', data).then(function () {
+                $('#messageSaveBtn').val('+').attr('disabled', false);
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()('Salvo com sucesso!', 'O bot ja deve responder com a sua mensagem!', 'success');
+                _this5.dataToSave = { type: 'text' };
+                _this5.$store.dispatch('getPostback', _this5.$route.params.id);
             });
         }
     },
@@ -1985,6 +2070,21 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 // module
 exports.push([module.i, "\n#form-new-postback{\n    margin-top: 30px;\n}\n.btn-postback{\n    display: block;\n    text-align: left;\n    margin-bottom: 10px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d037b052\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Bot/PostbackShow.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#message-field{\n    background-color: rgba(255, 255, 255, 0.9);\n    margin-bottom: 20px;\n    padding: 10px;\n    border-radius: 2px;\n}\n#message-field input{\n    margin-bottom: 0;\n    border-bottom: none;\n}\n#message-field label{\n    left: 10px;\n}\n", ""]);
 
 // exports
 
@@ -31264,6 +31364,40 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3e778c24\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Bot/Message.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "card"
+  }, [_c('span', {
+    staticClass: "green badge white-text"
+  }, [_vm._v("text")]), _vm._v(" "), _c('div', {
+    staticClass: "card-content"
+  }, [_c('blockquote', [_c('strong', [_vm._v("Mensagem: ")]), _vm._v(" Xpto\n        ")])]), _vm._v(" "), _c('div', {
+    staticClass: "card-action"
+  }, [_c('a', {
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Editar")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Remover")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3e778c24", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-c7c721e2\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Auth/Register.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31419,7 +31553,52 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h3', [_vm._v("Postback: " + _vm._s(_vm.postback.value))]), _vm._v(" "), _c('p', [_c('router-link', {
+  return _c('div', [_c('h3', [_vm._v("Postback: " + _vm._s(_vm.postback.value))]), _vm._v(" "), (_vm.showEditForm) ? _c('form', {
+    attrs: {
+      "id": "form-new-postback"
+    },
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.save()
+      }
+    }
+  }, [_c('div', {
+    staticClass: "input-field"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.postback.value),
+      expression: "postback.value"
+    }],
+    attrs: {
+      "type": "text",
+      "name": "value",
+      "id": "value",
+      "required": ""
+    },
+    domProps: {
+      "value": (_vm.postback.value)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.postback.value = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "active",
+    attrs: {
+      "for": "value"
+    }
+  }, [_vm._v("Indentificação do Postback")])]), _vm._v(" "), _c('input', {
+    staticClass: "btn",
+    attrs: {
+      "type": "submit",
+      "value": "Atualizar"
+    }
+  })]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_c('router-link', {
     staticClass: "btn",
     attrs: {
       "to": {
@@ -31470,53 +31649,108 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.remove()
       }
     }
-  }, [_vm._v("Remover")])], 1), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.showEditForm) ? _c('form', {
-    attrs: {
-      "id": "form-new-postback"
-    },
+  }, [_vm._v("Remover")])], 1), _vm._v(" "), _c('message'), _vm._v(" "), _c('div', {
+    staticClass: "card light-green"
+  }, [_c('div', {
+    staticClass: "card-content"
+  }, [_c('form', {
     on: {
       "submit": function($event) {
         $event.preventDefault();
-        _vm.save()
+        _vm.newMessage()
       }
     }
-  }, [_c('div', {
-    staticClass: "input-field"
+  }, [_c('h5', {
+    staticClass: "white-text"
+  }, [_vm._v("Nova mensagem")]), _vm._v(" "), _c('div', {
+    staticClass: "input-filter"
+  }, [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.dataToSave.type),
+      expression: "dataToSave.type"
+    }],
+    staticClass: "browser-default",
+    attrs: {
+      "required": ""
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.dataToSave.type = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "",
+      "disabled": ""
+    }
+  }, [_vm._v("Tipo da mensagem")]), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c('div', {
+    staticClass: "input-field",
+    attrs: {
+      "id": "message-field"
+    }
   }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.postback.value),
-      expression: "postback.value"
+      value: (_vm.dataToSave.message),
+      expression: "dataToSave.message"
     }],
     attrs: {
       "type": "text",
-      "name": "value",
-      "id": "value",
       "required": ""
     },
     domProps: {
-      "value": (_vm.postback.value)
+      "value": (_vm.dataToSave.message)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.postback.value = $event.target.value
+        _vm.dataToSave.message = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('label', {
-    staticClass: "active",
+  }), _vm._v(" "), _c('label', [_vm._v("Mensagem")])]), _vm._v(" "), _c('input', {
+    staticClass: "btn blue",
     attrs: {
-      "for": "value"
-    }
-  }, [_vm._v("Indentificação do Postback")])]), _vm._v(" "), _c('input', {
-    staticClass: "btn",
-    attrs: {
+      "id": "messageSaveBtn",
       "type": "submit",
-      "value": "Atualizar"
+      "value": "+"
     }
-  })]) : _vm._e()])
-},staticRenderFns: []}
+  })])])])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('optgroup', {
+    attrs: {
+      "label": "Mensagem"
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "text"
+    }
+  }, [_vm._v("Texto")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "file"
+    }
+  }, [_vm._v("Arquivo")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "audio"
+    }
+  }, [_vm._v("Audio")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "image"
+    }
+  }, [_vm._v("Imagem")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "video"
+    }
+  }, [_vm._v("Vídeo")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -34057,6 +34291,33 @@ if(false) {
  if(!content.locals) {
    module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-370f503a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Postback.vue", function() {
      var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-370f503a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Postback.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d037b052\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Bot/PostbackShow.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d037b052\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Bot/PostbackShow.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("6dfb6084", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d037b052\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PostbackShow.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d037b052\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PostbackShow.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -45665,6 +45926,47 @@ module.exports = Component.exports
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/Bot/Message.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Bot/Message.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3e778c24\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Bot/Message.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/home/vagrant/Code/cursos/Code-education/Chatbot/projeto/resources/assets/js/components/Bot/Message.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Message.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3e778c24", Component.options)
+  } else {
+    hotAPI.reload("data-v-3e778c24", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/Bot/Postback.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45714,13 +46016,17 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d037b052\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Bot/PostbackShow.vue")
+}
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
   __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Bot/PostbackShow.vue"),
   /* template */
   __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-d037b052\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Bot/PostbackShow.vue"),
   /* styles */
-  null,
+  injectStyle,
   /* scopeId */
   null,
   /* moduleIdentifier (server only) */
@@ -45788,12 +46094,63 @@ module.exports = Component.exports
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_postbacks__ = __webpack_require__("./resources/assets/js/states/modules/postbacks.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_messages__ = __webpack_require__("./resources/assets/js/states/modules/messages.js");
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     modules: {
-        postback: __WEBPACK_IMPORTED_MODULE_0__modules_postbacks__["a" /* default */]
+        postback: __WEBPACK_IMPORTED_MODULE_0__modules_postbacks__["a" /* default */],
+        message: __WEBPACK_IMPORTED_MODULE_1__modules_messages__["a" /* default */]
     }
+});
+
+/***/ }),
+
+/***/ "./resources/assets/js/states/modules/messages.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var state = {
+    messages: {
+        data: []
+    },
+    message: {}
+};
+
+var mutations = {
+    messages: function messages(state, data) {
+        state.messages = data;
+    },
+    message: function message(state, data) {
+        state.message = data;
+    }
+};
+
+var actions = {
+    getMessages: function getMessages(context) {
+        return window.axios.get('api/v1/messages').then(function (response) {
+            context.commit('messages', response.data);
+        });
+    },
+    newMessage: function newMessage(context, data) {
+        return window.axios.post('api/v1/messages', data);
+    },
+    getMessage: function getMessage(context, id) {
+        return window.axios.get('api/v1/messages/' + id).then(function (response) {
+            context.commit('message', response.data);
+        });
+    },
+    updateMessage: function updateMessage(context, data) {
+        return window.axios.put('api/v1/messages/' + data.id, data.data);
+    },
+    removeMessage: function removeMessage(context, id) {
+        return window.axios.delete('api/v1/messages/' + id);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    state: state, mutations: mutations, actions: actions
 });
 
 /***/ }),

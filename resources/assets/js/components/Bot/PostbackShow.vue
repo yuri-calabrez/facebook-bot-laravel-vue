@@ -1,6 +1,14 @@
 <template>
     <div>
         <h3>Postback: {{postback.value}}</h3>
+        <form @submit.prevent="save()" id="form-new-postback" v-if="showEditForm">
+            <div class="input-field">
+                <input type="text" name="value" id="value" v-model="postback.value" required>
+                <label for="value" class="active">Indentificação do Postback</label>
+            </div>
+            <input type="submit" value="Atualizar" class="btn">
+        </form>
+        <br>
         <p>
             <router-link :to="{path: '/'}" class="btn">Voltar</router-link>
             <a href="#" @click.prevent="addGetStartedButton()" v-if="!postback.get_started"
@@ -10,25 +18,49 @@
             <a href="#" @click.prevent="showEditForm = !showEditForm" class="btn blue">Editar</a>
             <a href="#" @click.prevent="remove()" class="btn red">Remover</a>
         </p>
-        <br>
-        <form @submit.prevent="save()" id="form-new-postback" v-if="showEditForm">
-            <div class="input-field">
-                <input type="text" name="value" id="value" v-model="postback.value" required>
-                <label for="value" class="active">Indentificação do Postback</label>
+        <message></message>
+
+        <div class="card light-green">
+            <div class="card-content">
+                <form @submit.prevent="newMessage()">
+                    <h5 class="white-text">Nova mensagem</h5>
+                    <div class="input-filter">
+                        <select class="browser-default" required v-model="dataToSave.type">
+                            <option value="" disabled>Tipo da mensagem</option>
+                            <optgroup label="Mensagem">
+                                <option value="text">Texto</option>
+                                <option value="file">Arquivo</option>
+                                <option value="audio">Audio</option>
+                                <option value="image">Imagem</option>
+                                <option value="video">Vídeo</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div id="message-field" class="input-field">
+                        <input type="text" required v-model="dataToSave.message">
+                        <label>Mensagem</label>
+                    </div>
+                    <input id="messageSaveBtn" type="submit" value="+" class="btn blue">
+                </form>
             </div>
-            <input type="submit" value="Atualizar" class="btn">
-        </form>
+        </div>
 
     </div>
 </template>
 
 <script>
+    import Message from './Message';
     import swal from 'sweetalert';
 
     export default {
+        components: {
+          'message': Message
+        },
         data(){
           return {
-              showEditForm: false
+              showEditForm: false,
+              dataToSave: {type: ''}
           }
         },
         computed: {
@@ -122,6 +154,36 @@
 
                     }
                 )
+            },
+            newMessage(){
+                let $ = window.jQuery;
+                $('#messageSaveBtn').val('Aguarde...').attr('disabled', true);
+
+                let data = {
+                    type: this.dataToSave.type || 'text',
+                    message: this.dataToSave.message,
+                    template: false,
+                    postback_id: this.$route.params.id
+                };
+
+                let messagesType = [
+                    'text',
+                    'file',
+                    'audio',
+                    'image',
+                    'video',
+                ];
+
+                if(messagesType.indexOf(data.type) === -1) {
+                    data.template = true;
+                }
+                this.$store.dispatch('newMessage', data).then(() => {
+                    $('#messageSaveBtn').val('+').attr('disabled', false);
+                    swal('Salvo com sucesso!', 'O bot ja deve responder com a sua mensagem!', 'success');
+                    this.dataToSave = {type: 'text'};
+                    this.$store.dispatch('getPostback', this.$route.params.id);
+                });
+
             }
         },
         mounted(){
@@ -130,3 +192,21 @@
         }
     }
 </script>
+
+<style>
+    #message-field{
+        background-color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 2px;
+    }
+
+    #message-field input{
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+
+    #message-field label{
+        left: 10px;
+    }
+</style>
