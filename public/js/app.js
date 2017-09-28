@@ -1787,6 +1787,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert__ = __webpack_require__("./node_modules/sweetalert/lib/sweetalert.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1804,7 +1834,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['messageData'],
+    data: function data() {
+        return {
+            currentMessage: null,
+            showEditForm: false
+        };
+    },
+
+    methods: {
+        update: function update(message) {
+            var _this = this;
+
+            var data = {
+                id: this.message.id,
+                data: {
+                    type: this.message.type,
+                    message: message
+                }
+            };
+
+            this.$store.dispatch('updateMessage', data).then(function () {
+                __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Salvo com sucesso!', 'O bot ja deve responder com esta atualização', 'success');
+                _this.message.message = message;
+                _this.showEditForm = false;
+                _this.$store.dispatch('getPostback', _this.$route.params.id);
+            });
+        },
+        remove: function remove() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
+                title: "Removendo!!",
+                text: "Deseja realmente remover esta mensagem? Você não podera desfazer esta ação",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Confirmar",
+                cancelButtonText: "Cancelar"
+            }, function () {
+                _this2.$store.dispatch('removeMessage', _this2.message.id).then(function () {
+                    __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()('Removido!', 'Removido com sucesso!', 'success');
+                    _this2.$store.dispatch('getPostback', _this2.$route.params.id);
+                });
+            });
+        }
+    },
+    computed: {
+        message: function message() {
+            return this.messageData;
+        }
+    }
+});
 
 /***/ }),
 
@@ -1874,6 +1958,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Message__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert__ = __webpack_require__("./node_modules/sweetalert/lib/sweetalert.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert__);
+//
 //
 //
 //
@@ -31368,26 +31453,121 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "card"
   }, [_c('span', {
     staticClass: "green badge white-text"
-  }, [_vm._v("text")]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.message.type))]), _vm._v(" "), _c('div', {
     staticClass: "card-content"
-  }, [_c('blockquote', [_c('strong', [_vm._v("Mensagem: ")]), _vm._v(" Xpto\n        ")])]), _vm._v(" "), _c('div', {
+  }, [_c('blockquote', [_c('strong', [_vm._v("Mensagem: ")]), _vm._v(" " + _vm._s(_vm.message.message) + "\n        ")]), _vm._v(" "), (_vm.message.type === 'image') ? _c('img', {
+    staticClass: "responsive-image",
+    attrs: {
+      "src": _vm.message.message
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.message.type === 'audio') ? _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": _vm.message.message
+    }
+  })]) : _vm._e(), _vm._v(" "), (_vm.message.type === 'video') ? _c('div', {
+    staticClass: "video-container"
+  }, [_c('video', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": _vm.message.message
+    }
+  })])]) : _vm._e(), _vm._v(" "), (_vm.message.type === 'file') ? _c('blockquote', [_c('a', {
+    attrs: {
+      "href": _vm.message.message
+    }
+  }, [_c('i', {
+    staticClass: "material-icons"
+  }, [_vm._v("attach_file")]), _vm._v(" Download")])]) : _vm._e(), _vm._v(" "), (_vm.showEditForm) ? _c('form', {
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.update(_vm.currentMessage)
+      }
+    }
+  }, [_c('div', {
+    staticClass: "input-field"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.currentMessage),
+      expression: "currentMessage"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Mensagem ou url...",
+      "required": ""
+    },
+    domProps: {
+      "value": (_vm.currentMessage)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.currentMessage = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "active"
+  }, [_vm._v("Mensagem")])]), _vm._v(" "), _c('input', {
+    staticClass: "btn",
+    attrs: {
+      "type": "submit",
+      "value": "Atualizar",
+      "id": "messageSaveBtn"
+    }
+  }), _vm._v(" "), _c('input', {
+    staticClass: "btn lime",
+    attrs: {
+      "type": "button",
+      "value": "Cancelar"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.showEditForm = !_vm.showEditForm
+      }
+    }
+  }), _vm._v(" "), _c('hr')]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "card-action"
   }, [_c('a', {
     attrs: {
-      "href": ""
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.showEditForm = !_vm.showEditForm;
+        _vm.currentMessage = _vm.message.message
+      }
     }
   }, [_vm._v("Editar")]), _vm._v(" "), _c('a', {
     attrs: {
       "href": ""
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.remove()
+      }
     }
   }, [_vm._v("Remover")])])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -31649,7 +31829,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.remove()
       }
     }
-  }, [_vm._v("Remover")])], 1), _vm._v(" "), _c('message'), _vm._v(" "), _c('div', {
+  }, [_vm._v("Remover")])], 1), _vm._v(" "), _vm._l((_vm.postback.messages), function(message) {
+    return _c('message', {
+      attrs: {
+        "message-data": message
+      }
+    })
+  }), _vm._v(" "), _c('div', {
     staticClass: "card light-green"
   }, [_c('div', {
     staticClass: "card-content"
@@ -31723,7 +31909,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "submit",
       "value": "+"
     }
-  })])])])], 1)
+  })])])])], 2)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('optgroup', {
     attrs: {

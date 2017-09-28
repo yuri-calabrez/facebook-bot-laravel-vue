@@ -18,7 +18,8 @@
             <a href="#" @click.prevent="showEditForm = !showEditForm" class="btn blue">Editar</a>
             <a href="#" @click.prevent="remove()" class="btn red">Remover</a>
         </p>
-        <message></message>
+
+        <message v-for="message in postback.messages" :message-data="message"></message>
 
         <div class="card light-green">
             <div class="card-content">
