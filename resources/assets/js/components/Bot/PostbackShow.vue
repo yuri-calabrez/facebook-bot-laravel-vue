@@ -35,6 +35,9 @@
                                 <option value="image">Imagem</option>
                                 <option value="video">Vídeo</option>
                             </optgroup>
+                            <optgroup label="Mensagem">
+                                <option value="buttons">Botões</option>
+                            </optgroup>
                         </select>
                     </div>
 

@@ -22,6 +22,8 @@
                 <a :href="message.message"><i class="material-icons">attach_file</i> Download</a>
             </blockquote>
 
+            <buttons v-if="message.type === 'buttons'" :message-data="message"></buttons>
+
             <form @submit.prevent="update(currentMessage)" v-if="showEditForm">
                 <div class="input-field">
                     <input type="text" class="form-control" placeholder="Mensagem ou url..."
@@ -44,9 +46,13 @@
 
 <script>
     import swal from 'sweetalert';
+    import Buttons from './Templates/Buttons';
 
     export default {
         props: ['messageData'],
+        components: {
+          buttons: Buttons
+        },
         data() {
             return {
                 currentMessage: null,
