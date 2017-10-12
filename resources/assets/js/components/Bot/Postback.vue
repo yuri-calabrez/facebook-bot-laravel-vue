@@ -2,11 +2,15 @@
     <div>
         <h3>Postbacks</h3>
 
-        <div>
+        <div v-if="postbacks.data.length > 0">
             <router-link v-for="postback in postbacks.data" class="btn waves-effect waves-light light-green btn-postback"
                 :to="{path: '/postback/'+postback.id}">
                 <i class="material-icons" v-if="postback.get_started">done_all</i> {{postback.value}}
             </router-link>
+        </div>
+
+        <div v-if="postbacks.data.length === 0">
+            <div class="card-content white-text">Não existem postbacks</div>
         </div>
 
         <form @submit.prevent="save()" id="form-new-postback">

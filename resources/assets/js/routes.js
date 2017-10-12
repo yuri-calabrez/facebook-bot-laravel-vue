@@ -14,6 +14,27 @@ export default [
         }
     },
     {
+        path: '/products',
+        component: require('./components/Products/ProductsList'),
+        meta: {
+            requireAuth: true
+        }
+    },
+    {
+        path: '/products/:id/edit',
+        component: require('./components/Products/ProductsEdit'),
+        meta: {
+            requireAuth: true
+        }
+    },
+    {
+        path: '/products/:id/remove',
+        component: require('./components/Products/ProductsRemove'),
+        meta: {
+            requireAuth: true
+        }
+    },
+    {
         path: '/login',
         component: require('./components/Auth/Login.vue'),
         meta: {
