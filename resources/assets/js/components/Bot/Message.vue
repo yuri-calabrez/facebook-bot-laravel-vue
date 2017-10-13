@@ -23,6 +23,8 @@
             </blockquote>
 
             <buttons v-if="message.type === 'buttons'" :message-data="message"></buttons>
+            <generic v-if="message.type === 'generic'" :message-data="message"></generic>
+            <list v-if="message.type === 'list'" :message-data="message"></list>
 
             <form @submit.prevent="update(currentMessage)" v-if="showEditForm">
                 <div class="input-field">
@@ -47,11 +49,14 @@
 <script>
     import swal from 'sweetalert';
     import Buttons from './Templates/Buttons';
+    import Generic from './Templates/Generic';
 
     export default {
         props: ['messageData'],
         components: {
-          buttons: Buttons
+          buttons: Buttons,
+          generic: Generic,
+          list: Generic,
         },
         data() {
             return {

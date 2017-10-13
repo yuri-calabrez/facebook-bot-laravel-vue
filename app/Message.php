@@ -12,4 +12,14 @@ class Message extends Model
         'template',
         'postback_id'
     ];
+
+    public function elements()
+    {
+        return $this->hasMany(Element::class);
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

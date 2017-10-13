@@ -37,6 +37,8 @@
                             </optgroup>
                             <optgroup label="Mensagem">
                                 <option value="buttons">Botões</option>
+                                <option value="generic">Slider de produtos</option>
+                                <option value="list">Lista de produtos</option>
                             </optgroup>
                         </select>
                     </div>
