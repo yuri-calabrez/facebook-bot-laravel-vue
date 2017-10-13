@@ -42,4 +42,15 @@ class MessagesBuilderRepository
         $bot->message('text', $message->message);
         $bot->template($message->type, $message->message, $products);
     }
+
+    private function list(Bot $bot, Message $message)
+    {
+        $products = [];
+        foreach ($message->products as $product) {
+            $defaul_action = new Button('web_url', null, $product->url);
+            $products[] = new Product($product->title, $product->image_full_url, $product->subtitle, $defaul_action);
+        }
+        $bot->message('text', $message->message);
+        $bot->template($message->type, $message->message, $products);
+    }
 }
