@@ -32,6 +32,8 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'Api\\V1', 'middleware' => 'a
     Route::resource('/messages', 'MessagesController');
     Route::resource('/elements', 'ElementsController');
     Route::resource('/products', 'ProductsController');
+
+    Route::resource('/suggestions', 'SuggestionsController');
 });
 
 

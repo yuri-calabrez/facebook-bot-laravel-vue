@@ -35,6 +35,13 @@ export default [
         }
     },
     {
+        path: '/suggestions',
+        component: require('./components/Suggestions/SuggestionsList'),
+        meta: {
+            requireAuth: true
+        }
+    },
+    {
         path: '/login',
         component: require('./components/Auth/Login.vue'),
         meta: {
