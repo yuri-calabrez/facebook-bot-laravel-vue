@@ -47862,7 +47862,7 @@ var mutations = {
 
 var actions = {
     getElements: function getElements(context, id) {
-        return window.axios.get('api/v1/elements?where[message_id=' + id + ']').then(function (response) {
+        return window.axios.get('api/v1/elements?where[message_id]=' + id).then(function (response) {
             context.commit('elements', response.data);
             return response;
         });

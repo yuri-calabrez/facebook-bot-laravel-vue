@@ -16,7 +16,7 @@ const mutations = {
 
 const actions = {
     getElements(context, id) {
-        return window.axios.get('api/v1/elements?where[message_id='+id+']').then(response => {
+        return window.axios.get('api/v1/elements?where[message_id]='+id).then(response => {
             context.commit('elements', response.data);
             return response;
         });
