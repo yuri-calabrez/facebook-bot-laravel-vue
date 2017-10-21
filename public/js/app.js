@@ -2379,6 +2379,75 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Menus/Menu.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            locale: 'default',
+            composer_input_disabled: true
+        };
+    },
+
+    computed: {
+        menus: function menus() {
+            return this.$store.state.menu.menus;
+        }
+    },
+    mounted: function mounted() {
+        this.$store.dispatch('getMenus');
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Products/ProductsEdit.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2666,6 +2735,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
     }
 });
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03b0ba45\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Menus/Menu.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.margin-botton{\n    margin-bottom: 20px;\n}\n", ""]);
+
+// exports
+
 
 /***/ }),
 
@@ -31815,6 +31899,132 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-03b0ba45\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Menus/Menu.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('h3', [_vm._v("Menus do Bot")]), _vm._v(" "), _c('button', {
+    staticClass: "btn red",
+    on: {
+      "click": function($event) {
+        _vm.removeMenu()
+      }
+    }
+  }, [_vm._v("Limpar menu no Facebook")]), _vm._v(" "), (_vm.menus.data.length > 0) ? _c('div', _vm._l((_vm.menus.data), function(menu) {
+    return _c('router-link', {
+      staticClass: "waves-effect waves-light btn-large light-green",
+      attrs: {
+        "to": {
+          path: 'menu/' + menu.id
+        }
+      }
+    }, [_vm._v("\n            " + _vm._s(menu.locale) + "\n            "), _c('small', [_vm._v("Campo de mensagem: " + _vm._s(menu.composer_input_disabled ? 'ativado' : 'desativado'))])])
+  })) : _vm._e(), _vm._v(" "), (_vm.menus.data.length === 0) ? _c('div', {
+    staticClass: "card red"
+  }, [_c('div', {
+    staticClass: "card-content white-text"
+  }, [_vm._v("Não existem menus cadastrados")])]) : _vm._e(), _vm._v(" "), _c('form', {
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.save()
+      }
+    }
+  }, [_c('legend', [_vm._v("Novo menu")]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "input-group col s6"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.locale),
+      expression: "locale"
+    }],
+    attrs: {
+      "type": "text",
+      "placeholder": "Locale",
+      "required": ""
+    },
+    domProps: {
+      "value": (_vm.locale)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.locale = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "input-group col s12 margin-botton"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.composer_input_disabled),
+      expression: "composer_input_disabled"
+    }],
+    attrs: {
+      "id": "composer_input_disabled",
+      "type": "checkbox",
+      "checked": ""
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.composer_input_disabled) ? _vm._i(_vm.composer_input_disabled, null) > -1 : (_vm.composer_input_disabled)
+    },
+    on: {
+      "__c": function($event) {
+        var $$a = _vm.composer_input_disabled,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.composer_input_disabled = $$a.concat([$$v]))
+          } else {
+            $$i > -1 && (_vm.composer_input_disabled = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.composer_input_disabled = $$c
+        }
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    attrs: {
+      "for": "composer_input_disabled"
+    }
+  }, [_vm._v("Exibir campo de mensagem?")])]), _vm._v(" "), _vm._m(1)])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "input-group col s6"
+  }, [_c('p', [_c('a', {
+    attrs: {
+      "target": "_blank",
+      "href": "https://developers.facebook.com/docs/messenger-platform/messenger-profile/supported-locales"
+    }
+  }, [_vm._v("\n                        Clique aqui para ver os locales suportados\n                    ")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "input-group col s12"
+  }, [_c('input', {
+    staticClass: "btn",
+    attrs: {
+      "type": "submit",
+      "value": "+"
+    }
+  })])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-03b0ba45", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-07c747be\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Products/ProductsEdit.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35666,6 +35876,33 @@ if (inBrowser && window.Vue) {
 
 /* harmony default export */ __webpack_exports__["a"] = (VueRouter);
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03b0ba45\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Menus/Menu.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03b0ba45\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Menus/Menu.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("3f302259", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03b0ba45\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Menu.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03b0ba45\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Menu.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ }),
 
@@ -47596,6 +47833,51 @@ module.exports = Component.exports
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/Menus/Menu.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03b0ba45\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Menus/Menu.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Menus/Menu.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-03b0ba45\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Menus/Menu.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/home/vagrant/Code/cursos/Code-education/Chatbot/projeto/resources/assets/js/components/Menus/Menu.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Menu.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-03b0ba45", Component.options)
+  } else {
+    hotAPI.reload("data-v-03b0ba45", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/Products/ProductsEdit.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -47801,6 +48083,12 @@ module.exports = Component.exports
         requireAuth: true
     }
 }, {
+    path: '/menus',
+    component: __webpack_require__("./resources/assets/js/components/Menus/Menu.vue"),
+    meta: {
+        requireAuth: true
+    }
+}, {
     path: '/login',
     component: __webpack_require__("./resources/assets/js/components/Auth/Login.vue"),
     meta: {
@@ -47824,6 +48112,10 @@ module.exports = Component.exports
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_messages__ = __webpack_require__("./resources/assets/js/states/modules/messages.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_elements__ = __webpack_require__("./resources/assets/js/states/modules/elements.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_products__ = __webpack_require__("./resources/assets/js/states/modules/products.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_menus__ = __webpack_require__("./resources/assets/js/states/modules/menus.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_menuButtons__ = __webpack_require__("./resources/assets/js/states/modules/menuButtons.js");
+
+
 
 
 
@@ -47834,7 +48126,9 @@ module.exports = Component.exports
         postback: __WEBPACK_IMPORTED_MODULE_0__modules_postbacks__["a" /* default */],
         message: __WEBPACK_IMPORTED_MODULE_1__modules_messages__["a" /* default */],
         element: __WEBPACK_IMPORTED_MODULE_2__modules_elements__["a" /* default */],
-        product: __WEBPACK_IMPORTED_MODULE_3__modules_products__["a" /* default */]
+        product: __WEBPACK_IMPORTED_MODULE_3__modules_products__["a" /* default */],
+        menu: __WEBPACK_IMPORTED_MODULE_4__modules_menus__["a" /* default */],
+        menuButton: __WEBPACK_IMPORTED_MODULE_5__modules_menuButtons__["a" /* default */]
     }
 });
 
@@ -47880,6 +48174,109 @@ var actions = {
     },
     removeElement: function removeElement(context, id) {
         return window.axios.delete('api/v1/elements/' + id);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    state: state, mutations: mutations, actions: actions
+});
+
+/***/ }),
+
+/***/ "./resources/assets/js/states/modules/menuButtons.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var state = {
+    menuButtons: {
+        data: []
+    },
+    menuButton: {}
+};
+
+var mutations = {
+    menuButtons: function menuButtons(state, data) {
+        state.menuButtons = data;
+    },
+    menuButton: function menuButton(state, data) {
+        state.menuButton = data;
+    }
+};
+
+var actions = {
+    getmenuButtons: function getmenuButtons(context) {
+        return window.axios.get('api/v1/menu-buttons').then(function (response) {
+            context.commit('menuButtons', response.data);
+        });
+    },
+    newmenuButton: function newmenuButton(context, data) {
+        return window.axios.post('api/v1/menu-buttons', data);
+    },
+    getmenuButton: function getmenuButton(context, id) {
+        return window.axios.get('api/v1/menu-buttons/' + id).then(function (response) {
+            context.commit('menuButton', response.data);
+        });
+    },
+    updatemenuButton: function updatemenuButton(context, data) {
+        return window.axios.post('api/v1/menu-buttons/' + data.id, data.data);
+    },
+    removemenuButton: function removemenuButton(context, id) {
+        return window.axios.delete('api/v1/menu-buttons/' + id);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    state: state, mutations: mutations, actions: actions
+});
+
+/***/ }),
+
+/***/ "./resources/assets/js/states/modules/menus.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var state = {
+    menus: {
+        data: []
+    },
+    menu: {}
+};
+
+var mutations = {
+    menus: function menus(state, data) {
+        state.menus = data;
+    },
+    menu: function menu(state, data) {
+        state.menu = data;
+    }
+};
+
+var actions = {
+    getMenus: function getMenus(context) {
+        return window.axios.get('api/v1/menus').then(function (response) {
+            context.commit('menus', response.data);
+            return response;
+        });
+    },
+    newMenu: function newMenu(context, data) {
+        return window.axios.post('api/v1/menus', data);
+    },
+    getMenu: function getMenu(context, id) {
+        return window.axios.get('api/v1/menus/' + id).then(function (response) {
+            context.commit('menu', response.data);
+        });
+    },
+    updateMenu: function updateMenu(context, data) {
+        return window.axios.put('api/v1/menus/' + data.id, data.data);
+    },
+    removeMenu: function removeMenu(context, id) {
+        return window.axios.delete('api/v1/menus/' + id);
+    },
+    setToFacebook: function setToFacebook(context, id) {
+        return window.axios.get('api/v1/menus/set-menu/' + id);
+    },
+    removeToFacebook: function removeToFacebook(context) {
+        return window.axios.get('api/v1/menus/remove-menu');
     }
 };
 
