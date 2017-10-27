@@ -21,9 +21,9 @@ Route::group(['prefix' => 'bot'], function(){
 });
 
 Route::group(['prefix' => 'api/v1', 'namespace' => 'Api\\V1', 'middleware' => 'auth'], function(){
-    Route::resource('menus', 'MenusController');
     Route::get('/menus/set-menu/{menuId}', 'MenusController@setMenu');
     Route::get('/menus/remove-menu', 'MenusController@removeMenu');
+    Route::resource('menus', 'MenusController');
     Route::resource('menu-buttons', 'MenuButtonsController');
 
     Route::post('/postbacks/get-started-button/{id}', 'PostbacksController@setGetStartedButton');

@@ -35,10 +35,10 @@ const actions = {
     removeMenu(context, id) {
         return window.axios.delete('api/v1/menus/'+id);
     },
-    setToFacebook(context, id) {
+    sendToFacebook(context, id) {
         return window.axios.get('api/v1/menus/set-menu/'+id);
     },
-    removeToFacebook(context) {
+    removeFromFacebook(context) {
         return window.axios.get('api/v1/menus/remove-menu');
     }
 };

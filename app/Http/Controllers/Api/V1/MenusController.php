@@ -29,7 +29,7 @@ class MenusController extends Controller
         $bot = Solid::factory();
         Solid::setPageAccessToken(config('botfb.page_access_token'));
 
-        $result = $bot->addMenu($menu->locale, $menu->composer_input_disabled, $menu->menuButtons);
+        $result = $bot->addMenu($menu->locale, $menu->composer_input_disabled, $menu->menuButtons->toArray());
 
         $menu->facebook_diff = false;
         $menu->save();

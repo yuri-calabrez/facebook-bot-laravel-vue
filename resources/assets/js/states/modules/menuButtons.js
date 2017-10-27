@@ -20,18 +20,18 @@ const actions = {
             context.commit('menuButtons', response.data);
         });
     },
-    newmenuButton(context, data) {
+    newMenuButton(context, data) {
         return window.axios.post('api/v1/menu-buttons', data);
     },
-    getmenuButton(context, id) {
+    getMenuButton(context, id) {
         return window.axios.get('api/v1/menu-buttons/'+id).then(response => {
             context.commit('menuButton', response.data);
         });
     },
-    updatemenuButton(context, data) {
+    updateMenuButton(context, data) {
         return window.axios.post('api/v1/menu-buttons/'+data.id, data.data);
     },
-    removemenuButton(context, id) {
+    removeMenuButton(context, id) {
         return window.axios.delete('api/v1/menu-buttons/'+id);
     }
 };

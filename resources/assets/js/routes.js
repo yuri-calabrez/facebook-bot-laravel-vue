@@ -49,6 +49,13 @@ export default [
         }
     },
     {
+        path: '/menu/:id',
+        component: require('./components/Menus/MenuView'),
+        meta: {
+            requireAuth: true
+        }
+    },
+    {
         path: '/login',
         component: require('./components/Auth/Login.vue'),
         meta: {
